@@ -116,13 +116,18 @@
               </div>
             </div>
           </div>
+          {% if user.is_authenticated %}
           <div class="room__message">
-            <form action="" method="POST">
-              {% csrf_token %}
-              <div id="keyboard-container"></div>
-
-            <input name="body" placeholder="Shkruani mesazhin tuaj këtu..."  inputmode="text" /></form>
+              <form action="" method="POST">
+                  {% csrf_token %}
+                  <div id="keyboard-container"></div>
+                  <input name="body" placeholder="Shkruani mesazhin tuaj këtu..." inputmode="text" />
+              </form>
           </div>
+          {% else %}
+          <p>Please <a href="{% url 'login' %}">log in</a> to write a message.</p>
+          {% endif %}
+      
         </div>
         <!-- Room End -->
 
