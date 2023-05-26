@@ -15,7 +15,7 @@
                 </path>
               </svg>
             </a>
-            <h3>Create/Update eRooms</h3>
+            <h3>Krijo/Përditëso eDhoma</h3>
           </div>
         </div>
         <div class="layout__body">
@@ -24,7 +24,7 @@
 
             
             <div class="form__group">
-              <label for="room_topic">Add a eTopic</label>
+              <label for="room_topic">Shtoni ose Lidhuni me eTemat</label>
               <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list"/>
               <datalist id="topic-list">
                 <select id="room_topic">
@@ -38,33 +38,19 @@
            
 
             <div class="form__group">
-              <label for="room_name">eRoom Name</label>
+              <label for="room_name">Emri i eDhomës</label>
               {{form.name}}
             </div>
 
             
             <div class="form__group">
-              <label for="room_description">eRoom Description</label>
+              <label for="room_description">Përshkrimi i eDhomës</label>
               {{form.description}}
             </div>
-           
-
-            <!-- <div class="form__group">
-              <label for="room_topic">Topic</label>
-              <input required type="text" name="topic" id="room_topic" list="topic-list" />
-              <datalist id="topic-list">
-                <select id="room_topic">
-                  <option value="">Select your topic</option>
-                  <option value="Python">Python</option>
-                  <option value="Django">Django</option>
-                </select>
-              </datalist>
-
-            </div> -->
 
             <div class="form__action">
-              <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
-              <button class="btn btn--main" type="submit">Submit eRoom</button>
+              <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Anulo</a>
+              <button class="btn btn--main" type="submit">Paraqisni eDhomen</button>
             </div>
           </form>
         </div>

@@ -107,3 +107,67 @@ document.addEventListener('DOMContentLoaded', function() {
   modeToggleBtn.addEventListener('click', toggleMode);
   button.classList.toggle("dark-mode");
 });
+
+
+
+
+$(document).ready(function() {
+  var isVirtualInput = false;
+
+  // Function to show the virtual keyboard
+  function showKeyboard() {
+    // Attach the keyboard to the input element
+    var keyboard = $('#keyboard-container').getkeyboard();
+    keyboard.reveal();
+  }
+
+  // Function to hide the virtual keyboard
+  function hideKeyboard() {
+    // Hide the keyboard
+    $('#keyboard-container').getkeyboard().close();
+  }
+
+  // Show the keyboard when the input field is clicked
+  $('input[name="body"]').on('click', function() {
+    showKeyboard();
+  });
+
+  // Hide the keyboard when clicked anywhere outside the input field
+  $(document).on('click', function(event) {
+    if (!$(event.target).closest('input[name="body"]').length) {
+      hideKeyboard();
+    }
+  });
+
+  // Attach the keyboard to the input element initially
+  $('#keyboard-container').keyboard({
+    layout: 'qwerty', // Set the keyboard layout (e.g., qwerty, alphabetical, numeric)
+    usePreview: false, // Disable key preview
+    autoAccept: true, // Automatically accept the typed key
+    alwaysOpen: false, // Hide the keyboard when not focused on the input field
+    position: {
+      of: $('input[name="body"]'), // Set the position of the keyboard relative to the input field
+      my: 'center top',
+      at: 'center bottom',
+      offset: '0 10', // Adjust the offset if needed
+      collision: 'flipfit flipfit' // Adjust collision handling if needed
+    },
+    change: function(e, keyboard, el) {
+      if (isVirtualInput) {
+        var virtualInputValue = keyboard.preview.value.replace(/<br>/g, '\n');
+        var currentValue = $('input[name="body"]').val();
+        var caretPosition = el.selectionStart;
+        var newValue = currentValue.slice(0, caretPosition) + virtualInputValue + currentValue.slice(caretPosition);
+        $('input[name="body"]').val(newValue);
+        isVirtualInput = false;
+      } else {
+        isVirtualInput = true;
+      }
+    }
+  });
+
+  // Hide the keyboard initially
+  hideKeyboard();
+});
+
+

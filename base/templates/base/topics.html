@@ -15,7 +15,7 @@
                   ></path>
                 </svg>
               </a>
-              <h3>Check over Topics</h3>
+              <h3>Shiko Temat</h3>
             </div>
           </div>
 
@@ -34,7 +34,8 @@
 
             <ul class="topics__list">
               <li>
-                <a href="{% url 'topics' %}" class="active">All <span>{{topics.count}}</span></a>
+                <a href="{% url 'topics' %}" class="active">Të gjitha eTemat <span>{{topics.count}}</span></a>
+                
               </li>
               {% for topic in topics %}
               <li>

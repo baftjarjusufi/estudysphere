@@ -2,6 +2,9 @@
 
 {% block content %}
 
+{% load socialaccount %}
+{% load static %}
+
     <main class="auth layout">
 
       {% if page == 'login' %}
@@ -9,20 +12,20 @@
         <div class="layout__box">
           <div class="layout__boxHeader">
             <div class="layout__boxTitle">
-              <h3>Login</h3>
+              <h3>Identifikohu</h3>
             </div>
           </div>
           <div class="layout__body">
-            <h2 class="auth__tagline">Find your study partner</h2>
+            <h2 class="auth__tagline">Gjeni partnerin tuaj të studimit</h2>
 
             <form class="form" method="POST" action="">
               {% csrf_token %}
               <div class="form__group form__group">
-                <label for="room_name">Email:</label>
+                <label for="room_name">Emaili:</label>
                 <input id="username" name="email" type="text" placeholder="e.g. baftjarjusufi" />
               </div>
               <div class="form__group">
-                <label for="password">Password:</label>
+                <label for="password">Fjalëkalimi:</label>
                 <input
                   id="password"
                   name="password"
@@ -48,13 +51,13 @@
                   ></path>
                 </svg>
 
-                Login
+                Identifikohu
               </button>
             </form>
 
             <div class="auth__action">
-              <p>Sign up now</p>
-              <a href="{% url 'register' %}" class="btn btn--link">Sign Up</a>
+              <p>Regjistrohu tani</p>
+              <a href="{% url 'register' %}" class="btn btn--link">Regjistrohu</a>
             </div>
           </div>
         </div>
@@ -64,11 +67,18 @@
         <div class="layout__box">
           <div class="layout__boxHeader">
             <div class="layout__boxTitle">
-              <h3>eRegister</h3>
+              <h3>eRegjistrimi</h3>
             </div>
           </div>
           <div class="layout__body">
-            <h2 class="auth__tagline">Find the best interests you have :)</h2>
+            <h2 class="auth__tagline">Gjeni interesat më të mira që keni :)</h2>
+
+            <!--<div class=" signin text-center">
+
+             <a href="{% provider_login_url 'google' %}" class="text-dark"><img src="{% static "btn_google_signin_light_normal_web@2x.png" %}" style="width: 200px; height: auto;"></a>
+            </div> -->
+          
+            <br><br>
 
             <form class="form" method="POST" action="">
               {% csrf_token %}
@@ -79,6 +89,17 @@
                 {{field}}
               </div>
               {% endfor %}
+
+              <!-- <a href="{% provider_login_url 'google' %}" class="btn btn--google">
+                Sign in with Google
+              </a> -->
+              <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=1041925845998-gnbm0rtjbs4aeumksnqjldlo7qqra3rp.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=email%20profile&response_type=code&state=mnxQaGGlWNt7&access_type=online&service=lso&o2v=2&flowName=GeneralOAuthFlow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24" class="svgIcon">
+                  <path fill="#EA4335" d="M47.883,25.778c0-0.841-0.066-1.652-0.186-2.439H24.486v4.615h12.854c-0.559,3.288-3.714,9.614-12.854,9.614c-7.744,0-14.043-6.299-14.043-14.043c0-7.744,6.299-14.043,14.043-14.043c3.222,0,6.171,1.08,8.548,2.898L39.257,7.33c-2.394-2.245-5.551-3.599-8.969-3.599c-7.36,0-13.334,5.973-13.334,13.333c0,7.36,5.973,13.333,13.334,13.333c6.157,0,10.164-3.79,11.333-7.251h-11.33v-5.778h22.621C47.812,27.43,47.883,26.617,47.883,25.778z"></path>
+                </svg>
+                Identifikohu me Google'n
+              </a>
+              
 
               <button class="btn btn--main" type="submit">
                 <svg
@@ -97,13 +118,13 @@
                   ></path>
                 </svg>
 
-                Register
+                Regjistrohu
               </button>
             </form>
 
             <div class="auth__action">
-              <p>Do you have an account?</p>
-              <a href="{% url 'login' %}" class="btn btn--link">Login Now</a>
+              <p>A keni një llogari?</p>
+              <a href="{% url 'login' %}" class="btn btn--link">Identifikohu Tani</a>
             </div>
           </div>
         </div>

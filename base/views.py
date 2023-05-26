@@ -38,10 +38,11 @@ def loginPage(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.error(request, 'Username Or Password does not exist..')
-           
+            messages.error(request, 'Username or Password does not exist..')
+
     context = {'page': page}
     return render(request, 'base/loginregister.html', context)
+
 
 def logoutUser(request):
     logout(request)
@@ -56,7 +57,8 @@ def registerPage(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
-            login(request, user)
+            messages.success(request, f"New account created: {user.username}")
+            login(request, user , backend='django.contrib.auth.backends.ModelBackend')
             return redirect('home')
         else:
             messages.error(request, 'Error while registration')

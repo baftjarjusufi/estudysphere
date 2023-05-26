@@ -327,6 +327,7 @@ a {
   align-items: center;
   gap: 1rem;
   border-radius: 8px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 .header__search svg {
@@ -342,7 +343,12 @@ a {
   border: none;
   outline: none;
   color: var(--color-main1);
+  font-size: 1.6rem; /* Adds a font size of 1.6rem */
+  padding: 0.2rem; /* Adds padding of 0.8rem */
+  border-radius: 0.5rem; /* Adds a border radius of 0.5rem */
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1); /* Adds a box shadow */
 }
+
 
 @media screen and (max-width: 800px) {
   .header__search input {
@@ -450,6 +456,7 @@ a {
 /*========== Layout Box ==========*/
 
 .layout__box {
+  border: 3px solid var(--color-main);
   width: 90%;
   max-width: 48rem;
   min-height: 20rem;
@@ -509,6 +516,7 @@ a {
 .form__group {
   margin-bottom: 6rem;
   width: 100%;
+  
 }
 
 .form__split {
@@ -588,22 +596,33 @@ a {
   background-color: var(--color-dark1);
   padding: 30px;
   border-radius: 6px;
+  border-radius: 5rem;
 }
 
 .topics__header {
   margin-bottom: 5rem;
+
 }
 
 .topics__header h2 {
+  background-color: var(--color-dark-light);
   text-transform: uppercase;
-  font-weight: 800;
-  color: var(--color-dark-light);
+  text-align: center;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  color: var(--color-dark);
+  letter-spacing: 1px;
+  font-size: 1.4rem;
+  padding: 2rem;
+  border-radius: 5rem;
+  
 }
 
 .topics__list {
   list-style: none;
   padding: 0;
   margin: 0;
+  list-style-image: url('arrow-right.svg');
 }
 
 .topics__list li a {
@@ -746,12 +765,14 @@ a {
   gap: 1rem;
   font-size: 1.4rem;
   font-weight: 500;
+  
 }
 
 .roomListRoom__joined svg {
   fill: var(--color-main);
   width: 1.6rem;
   height: 1.6rem;
+  
 }
 
 .roomListRoom__topic {
@@ -770,6 +791,7 @@ a {
   background: var(--color-dark);
   border-radius: 5px;
   overflow: hidden;
+  border-radius: 5rem;
 }
 
 .activities__header h2 {
@@ -780,6 +802,7 @@ a {
   color: var(--color-dark);
   letter-spacing: 1px;
   font-size: 1.4rem;
+  padding: 2rem;
 }
 
 .activities__box {
@@ -1257,3 +1280,5 @@ a {
   background-color: transparent;
   border: none;
 }
+
+

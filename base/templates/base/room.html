@@ -17,7 +17,7 @@
                   ></path>
                 </svg>
               </a>
-              <h3>eStudy Room</h3>
+              <h3>eDhoma e Studimit</h3>
             </div>
             {% if room.host == request.user %}
             <div class="room__topRight">
@@ -49,7 +49,7 @@
               </a>
               <a href="{% url 'delete-room' room.id %}">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                  <title>remove</title>
+                  <title>hiqni</title>
                   <path
                     d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z"
                   ></path>
@@ -63,12 +63,12 @@
             <div class="room__header scroll">
               <div class="room__info">
                 <h3>{{room.name}}</h3>
-                <span>{{room.created|timesince}} ago</span>
+                <span>{{room.created|timesince}} më parë</span>
               </div>
               <div class="room__hosted">
-                <p>Created By</p>
+                <p>Krijuar nga</p>
                 <a href="{% url 'user-profile' room.host.id %}" class="room__author">
-                  <div class="avatar avatar--small">
+                  <div class="avatar avatar--small {% if request.user == room.host %}active{% endif %}">
                     <img src="{{room.host.avatar.url}}" />
                   </div>
                   <span>@{{room.host.username}}</span>
@@ -88,18 +88,18 @@
                   <div class="thread__top">
                     <div class="thread__author">
                       <a href="{% url 'user-profile' message.user.id %}" class="thread__authorInfo">
-                        <div class="avatar avatar--small">
-                          <img src="{{message.user.avatar.url}}" />
+                        <div class="avatar avatar--small {% if request.user == message.user %}active{% endif %}">
+                          <img src="{{ message.user.avatar.url }}" />
                         </div>
                         <span>@{{message.user.username}}</span>
                       </a>
-                      <span class="thread__date">{{message.created|timesince}} ago</span>
+                      <span class="thread__date">{{message.created|timesince}} më parë</span>
                     </div>
                     {% if request.user == message.user %}
                     <a href="{% url 'remove-message' message.id %}">
                     <div class="thread__delete">
                       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                        <title>remove</title>
+                        <title>hiqni</title>
                         <path
                           d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z"
                         ></path>
@@ -119,21 +119,22 @@
           <div class="room__message">
             <form action="" method="POST">
               {% csrf_token %}
-              
-            <input name="body" placeholder="Write your message here..." /></form>
+              <div id="keyboard-container"></div>
+
+            <input name="body" placeholder="Shkruani mesazhin tuaj këtu..."  inputmode="text" /></form>
           </div>
         </div>
         <!-- Room End -->
 
         <!--   Start -->
         <div class="participants">
-          <h3 class="participants__top">Entrants <span>({{entrants.count}} Joined)</span></h3>
+          <h3 class="participants__top">Pjesëmarrësit <span>({{entrants.count}} u bashkuan)</span></h3>
           <div class="participants__list scroll">
             
             {% for user in entrants %}
             <a href="{% url 'user-profile' user.id %}" class="participant">
-              <div class="avatar avatar--medium">
-                <img src="{{user.avatar.url}}" />
+     <div class="avatar avatar--small {% if request.user == user %}active{% endif %}">
+        <img src="{{ user.avatar.url }}" />
               </div>
               <p>
                 {{user.username}}

@@ -21,18 +21,18 @@
             <h3>{{user.name}}</h3>
             <p>@{{user.username}}</p>
             {% if request.user == user %}
-            <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
+            <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Modifikoni profilin</a>
             {% endif %}
           </div>
           <div class="profile__about">
-            <h3>Biography:</h3>
+            <h3>Biografia:</h3>
             <p> {{user.bio}} </p>
           </div>
         </div>
 
         <div class="roomList__header">
           <div>
-            <h2>eStudy rooms hosted by:</a>
+            <h2>eDhomat e studimit të organizuara nga:</a>
             </h2>
           </div>
         </div>
